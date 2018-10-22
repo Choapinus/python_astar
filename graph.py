@@ -1,17 +1,29 @@
 import os
 import collections
+import math
 
 class Node:
 	def __init__(self, _tuple):
 		self._id = _tuple[0]
 		self.x = _tuple[1]
 		self.y = _tuple[2]
+		self.costo = 0
 	
-	def get_coords(self):
-		return (self.x, self.y)
+	def get_coordsx(self):
+		return self.x
+	
+	def get_coordsy(self):
+		return self.y
 	
 	def get_id(self):
 		return self._id
+
+
+	@staticmethod
+	def distanceToCity(node1 , node2 ):
+		x = abs(node1.get_coordsx() - node2.get_coordsx())
+		y = abs(node1.get_coordsy() - node2.get_coordsy())
+		return math.sqrt(pow(x,2) + pow(y,2))
 	
 	def __str__(self):
 		return 'id {}: ({}, {})'.format(self._id, self.x, self.y)
